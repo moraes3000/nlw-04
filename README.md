@@ -1,34 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Projeto Moviet NLW#4 - React
 
-## Getting Started
+Realizado pela Rocketseat na semana NFL#4.
 
-First, run the development server:
+## useState
+O  nos permite criar estados em um componente criado a partir de uma função, assim como o state presente em componentes. 
 
-```bash
-npm run dev
-# or
-yarn dev
+Exemplo clicar no botão acrescentar mais um.
+
+```js
+const [counter, setCounter] = useState(1)
+
+function increment() {
+    setCounter(counter + 1)
+}
+
+return (
+    <button type='button' onClick={increment}>
+        {counter}
+    </button>
+)
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## useEffect
+Efeito corateral, quando algo acontecer dispare algo
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Espera receber dois parametros, o que deve fazer e quando deve executar
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Exemplo 1
+```js
+useEffect(() => { 
+"o que eu quero que faça" 
+},['Quando devo executar a função'])
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+Exemplo 2
+```js
+const [active, setActive] = useState(false);
 
-## Learn More
+useEffect(() => { 
+    console.log(active) 
+},[active])
 
-To learn more about Next.js, take a look at the following resources:
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+# SPA - Single Page Application 
+Aplicação de página unica, ocasiona uma troca de roda mas, não uma troca de página, onde carrega o conteúdo e não a página inteira.
 
-## Deploy on Vercel
+## Ponto negativo
+* Não é indexado pelo google, template é totalmente gerado pelo JS.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Ponto Positivo
+* Não é necessario carregar a página toda.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+# SSR - Server Side Rendering, 
+Server Side Rendering, O SSR pode fornecer aos usuários um carregamento mais eficiente da aplicação, já que parte da renderização é feita no servidor
+
+## Ponto negativo
+* Performance imprevisível: podem ocorrer algumas inconsistências justamente pelo deslocamento do esforço de renderização para o cliente.
+## Ponto Positivo
+* Ter boa indexação no Google é um requisito
+
+# SSG - Static Site Generators
+Geradores de Sites Estáticos. ... Os Static Site Generators (SSG) são programas processadores que unem conteúdo, algumas configurações, tema e plugins para criar as páginas do site. O resultado é uma pasta que contém os arquivos estáticos que compõem o site.
+
+
+## Ponto negativo
+* Pode demorar o Build
+
+## Ponto Positivo
+* Proteção contra ataques (eles não tem o quê invadir).
+* É mais barato! Qualquer servidorzinho de site estático é mais barato que uma hospedagem de site dinâmico
